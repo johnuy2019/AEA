@@ -25,7 +25,7 @@ class AnimeDBHelper {
             val values = ContentValues()
             values.put(AnimeContract.COLUMN_NAME_TITLE, a.title)
             values.put(AnimeContract.COLUMN_NAME_SEASON, a.season)
-            values.put(AnimeContract.COLUMN_NAME_YEAR, a.year)
+            values.put(AnimeContract.COLUMN_NAME_GENRE, a.genre)
 
             val db = this.writableDatabase
             db.insert(AnimeContract.TABLE_NAME, null, values)

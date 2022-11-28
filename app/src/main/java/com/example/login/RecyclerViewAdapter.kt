@@ -27,5 +27,4 @@ class RecyclerViewAdapter(llistat: MutableList<Anime>, context: Context?): Recyc
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val txtNom: TextView = view.findViewById(R.id.txtName);
     }
-
 }

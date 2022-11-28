@@ -1,5 +1,9 @@
 package com.example.login
 
-class Anime(var title: String,var season: String,var year: Int, var genre: String) {
+import android.icu.text.CaseMap
 
+class Anime(title: String,season: String,genre: String) {
+    var title = title
+    var season = season
+    var genre = genre
 }
