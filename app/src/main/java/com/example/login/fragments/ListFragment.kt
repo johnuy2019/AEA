@@ -1,5 +1,6 @@
 package com.example.login.fragments
 
+import com.example.login.DB.AnimeDBHelper
 import RecyclerViewAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,20 +23,22 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ListFragment : Fragment() {
+class ListFragment(dbHelper: AnimeDBHelper.DBHelper) : Fragment() {
+    val dbHelper = dbHelper;
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         var v: View= inflater.inflate(R.layout.fragment_list,container, false)
         // Inflate the layout for this fragment
-        var llistat : MutableList<Anime> = ArrayList()
+        var llistat :ArrayList<Anime> = dbHelper.selectAnima();
         var recyclerView: RecyclerView = v.findViewById(R.id.recyclerLlistat);
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter : RecyclerViewAdapter = RecyclerViewAdapter(llistat, context);
+        val adapter: RecyclerViewAdapter = RecyclerViewAdapter(llistat, context);
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
 
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        return v;
     }
 }

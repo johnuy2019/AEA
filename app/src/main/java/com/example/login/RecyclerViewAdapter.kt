@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.login.Anime
 import com.example.login.R
 
-class RecyclerViewAdapter(llistat: MutableList<Anime>, context: Context?): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
-    var llistat: MutableList<Anime> = llistat;
+class RecyclerViewAdapter(llistat: ArrayList<Anime>, context: Context?): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+    var llistat: ArrayList<Anime> = llistat;
     var context: Context? = context;
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,7 +17,9 @@ class RecyclerViewAdapter(llistat: MutableList<Anime>, context: Context?): Recyc
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.txtNom.setText(llistat.get(position).title)
+        holder.txtTitleList.setText(llistat.get(position).title)
+        holder.txtGenreList.setText(llistat.get(position).genre)
+        holder.txtSeasonList.setText(llistat.get(position).season)
     }
 
     override fun getItemCount(): Int {
@@ -25,6 +27,9 @@ class RecyclerViewAdapter(llistat: MutableList<Anime>, context: Context?): Recyc
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val txtNom: TextView = view.findViewById(R.id.txtName);
+        val txtTitleList: TextView = view.findViewById(R.id.txtTitleList);
+        val txtGenreList: TextView = view.findViewById(R.id.txtGenreList);
+        val txtSeasonList: TextView = view.findViewById(R.id.txtSeasonList);
     }
+
 }

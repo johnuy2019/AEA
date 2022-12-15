@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val txtPassword: EditText = findViewById(R.id.txtPassword)
 
         btnSignIn.setOnClickListener {
-            if(txtUsername.getText().toString()=="admin" && txtPassword.getText().toString()=="admin"){
+            if(txtUsername.getText().toString()=="" && txtPassword.getText().toString()==""){
                 val intent = Intent(this, BottomNavigation::class.java)
                 startActivity(intent)
             }

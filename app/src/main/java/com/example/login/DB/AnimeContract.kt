@@ -1,4 +1,4 @@
-package DB
+package com.example.login.DB
 
 object AnimeContract {
     val TABLE_NAME = "animes"
@@ -15,5 +15,3 @@ object AnimeContract {
 
     val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${TABLE_NAME}"
 }
-
-

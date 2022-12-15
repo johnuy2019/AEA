@@ -1,24 +1,26 @@
 package com.example.login
 
-import DB.AnimeDBHelper
+import com.example.login.DB.AnimeDBHelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.ListFragment
 import com.example.login.fragments.FormFragment
 import com.example.login.fragments.HomeFragment
+import com.example.login.fragments.ListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavigation : AppCompatActivity() {
+    companion object {
+        lateinit var dbHelper: AnimeDBHelper.DBHelper;
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_nav)
 
         val bottomNav: BottomNavigationView = findViewById(R.id.main_menu)
-        val dbHelper = AnimeDBHelper.DBHelper(this)
+        dbHelper = AnimeDBHelper.DBHelper(this)
 
         bottomNav.setOnItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
@@ -27,17 +29,16 @@ class BottomNavigation : AppCompatActivity() {
                     true
                 }
                 R.id.nav_list -> {
-                    loadFragment(ListFragment())
+                    loadFragment(ListFragment(dbHelper))
                     true
                 }
                 R.id.nav_form -> {
-                    loadFragment(FormFragment())
+                    loadFragment(FormFragment(dbHelper))
                     true
                 }
                 else -> {false}
             }
         }
-        dbHelper.insertAnime(Anime("title", "winter_2000","genre"));
     }
 
     private  fun loadFragment(fragment: Fragment){
@@ -45,10 +46,6 @@ class BottomNavigation : AppCompatActivity() {
         transaction.replace(R.id.fragment_container,fragment)
         transaction.addToBackStack(null)
         transaction.commit()
-    }
-
-    companion object {
-        lateinit var dbHelper: AnimeDBHelper.DBHelper;
     }
 
     override fun onDestroy() {
