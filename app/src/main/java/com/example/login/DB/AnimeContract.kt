@@ -14,4 +14,5 @@ object AnimeContract {
                 "${COLUMN_NAME_GENRE} TEXT)"
 
     val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${TABLE_NAME}"
+    val SQL_DELETE_ROWS = "DELETE FROM ${TABLE_NAME}"
 }

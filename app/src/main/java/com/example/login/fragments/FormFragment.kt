@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.example.login.Anime
 import com.example.login.BottomNavigation
 import com.example.login.BottomNavigation.Companion.dbHelper
@@ -38,6 +39,7 @@ class FormFragment(dbHelper: AnimeDBHelper.DBHelper) : Fragment() {
         btnNewForm.setOnClickListener {
             if((txtTitle.getText().isNotEmpty() || txtTitle.getText().isNotBlank()) && (txtSeason.getText().isNotEmpty() || txtSeason.getText().isNotBlank()) && (txtGenre.getText().isNotEmpty() || txtGenre.getText().isNotBlank())){
                 dbHelper.insertAnime(Anime(txtTitle.text.toString(), txtSeason.text.toString(),txtGenre.text.toString()));
+                Toast.makeText(context, "New anime in the list.", Toast.LENGTH_SHORT).show()
             }
         }
         return v;

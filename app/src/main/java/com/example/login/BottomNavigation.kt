@@ -52,4 +52,6 @@ class BottomNavigation : AppCompatActivity() {
         dbHelper.close()
         super.onDestroy()
     }
+
+
 }

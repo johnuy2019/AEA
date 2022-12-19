@@ -17,6 +17,7 @@ class AnimeDBHelper {
             db.execSQL(AnimeContract.SQL_DELETE_ENTRIES)
             onCreate(db)
         }
+
         companion object {
             // If you change the database schema, you must increment the database version.
             const val DATABASE_VERSION = 3
@@ -32,7 +33,7 @@ class AnimeDBHelper {
             db.insert(AnimeContract.TABLE_NAME, null, values)
         }
 
-        fun selectAnima():ArrayList<Anime>{
+        fun selectAnime():ArrayList<Anime>{
             val arrayList: ArrayList<Anime> = ArrayList();
 
             val db = this.readableDatabase
@@ -51,6 +52,11 @@ class AnimeDBHelper {
             db.close()
 
             return arrayList;
+        }
+
+        fun onDelete(){
+            val db = this.writableDatabase
+            db.execSQL(AnimeContract.SQL_DELETE_ROWS)
         }
     }
 }
